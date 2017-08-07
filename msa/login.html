@@ -1,0 +1,93 @@
+<html>
+	<head>
+		<title>Login</title>
+		<script language="JavaScript" type="text/javascript" src="cookies.js"></script>
+		<script language="JavaScript" type="text/javascript" src="VisitorAPI.js"></script>
+		<script language="JavaScript" type="text/javascript" src="at.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> 
+	</head>
+	
+	<body>
+	
+	<script language="JavaScript" type="text/javascript">
+	
+	function getParameterByName(name, url) {
+		if (!url) url = window.location.href;
+		name = name.replace(/[\[\]]/g, "\\$&");
+		var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+			results = regex.exec(url);
+		if (!results) return null;
+		if (!results[2]) return '';
+		return decodeURIComponent(results[2].replace(/\+/g, " "));
+	}
+	
+	
+	function login(username,password){
+		var url = "http://wesbites.com/msg/?username=" + username + "&password=" + password
+
+		$.get( url, function( data ) {
+			if(data.indexOf('error') >= 0){
+				console.log(data);
+				window.location.href = 'login.html?error='+data;
+			}
+			if(data.indexOf('error') == -1){
+				
+				/*Drop the cookie*/
+				createCookie("dma_auth", data, 10);
+				
+				/*Analytis Tagging the login*/
+				s.linkTrackVars = "eVar4,prop4,events";
+				s.linkTrackEvents="event1"
+				s.eVar4="login";
+				s.events="event1";
+				s.tl(this,'o','dma:loggedin',null,function(){window.location.href = 'homepage.html';});
+			}
+		});
+	}
+
+	
+	</script>
+		<div align="center">
+	<table border="0">
+		<tr>
+			<td align="right"><a href="homepage.html">Home</a></td>
+		</tr>	
+		
+	
+	</table>
+	
+		
+	
+
+ <form name="auth">
+  Username:<input type="text" name="user"><br>
+Password:<input type="text" name="password"><br><br>
+  <input type="button" value="Login" name="loginButton" onClick="login(document.auth.user.value,document.auth.password.value)">
+</form> 
+	<br><br>
+	
+	<script language="JavaScript" type="text/javascript">
+	if(getParameterByName('error',document.URL) != null){
+		if(getParameterByName('error',document.URL).indexOf("error") >= 0){
+			document.write('<font color="red">'+getParameterByName('error',document.URL)+'</font>');
+		}
+	}
+	</script>
+	</div>
+
+<!-- Analytics Code -->
+<script language="JavaScript" type="text/javascript" src="AppMeasurement.js"></script>
+<script language="JavaScript" type="text/javascript">
+
+s.pageName="dma:login";
+s.eVar6="login";
+
+
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script>
+<!-- End Analytics Code -->
+	
+	</body>
+</html>
+
+

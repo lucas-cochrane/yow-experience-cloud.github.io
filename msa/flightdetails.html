@@ -1,0 +1,118 @@
+<html>
+	<head>
+		<title>Flight Details</title>
+		<script language="JavaScript" type="text/javascript" src="cookies.js"></script>
+		<script language="JavaScript" type="text/javascript" src="VisitorAPI.js"></script>
+		<script language="JavaScript" type="text/javascript" src="at.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> 
+	</head>
+	
+	<body>
+	
+	<script language="JavaScript" type="text/javascript">
+	
+	
+	/*
+	var xmlhttp = new XMLHttpRequest();
+	var url = "https://wesbites.com/msg/flights.php";
+	var flights
+	xmlhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			flights = JSON.parse(this.responseText);
+		}
+	};
+	
+	xmlhttp.open("GET", url, true);
+	xmlhttp.send();*/
+	
+	
+	var flights;
+	var url = "https://wesbites.com/msg/flights.php";
+	$.ajax({
+	  url: url,
+	  async:false
+	}).done(function( data ) {
+		flights = data
+		});
+	
+	
+	//var flightsText ='[{"flightid":"1","shortdescription":"AMS --> JFK","category":"Frequent Flyer 10% discount","flightfrom":"Amsterdam Schiphol","flightto":"New York JFK","date":"20130521","thumbnailUrl":"msg\/resources\/flight_images\/newyork.jpg","pageurl":"http:\/\/wesbites.com\/retail\/e-commerce.html","price":"80099"},{"flightid":"2","shortdescription":"JFK --> AMS","category":"Frequent Flyer discount","flightfrom":"New York JFK","flightto":"Amsterdam Schiphol","date":"20130521","thumbnailUrl":"msg\/resources\/flight_images\/amsterdam.jpg","price":"99999"},{"flightid":"3","shortdescription":"JFK --> CDG","category":"Book Now","flightfrom":"New York JFK","flightto":"Paris Charles de Gaulle","date":"20130521","thumbnailUrl":"msg\/resources\/flight_images\/paris.jpg","pageurl":"http:\/\/wesbites.com\/retail\/e-commerce.html","price":"53460"},{"flightid":"4","shortdescription":"CDG --> JFK","category":"Book Now","flightfrom":"AParis Charles de Gaulle","flightto":"New York JFK","date":"20130521","thumbnailUrl":"msg\/resources\/flight_images\/newyork.jpg","pageurl":"http:\/\/wesbites.com\/retail\/e-commerce.html","price":"12334"},{"flightid":"5","shortdescription":"AMS --> BLR","category":"Book Now","flightfrom":"Amsterdam Schiphol","flightto":"Bengaluru International","date":"20130521","thumbnailUrl":"msg\/resources\/flight_images\/bangalore.jpg","pageurl":"http:\/\/wesbites.com\/retail\/e-commerce.html","price":"123634"},{"flightid":"6","category":"Book Now","shortdescription":"BLR --> AMS","flightfrom":"Bengaluru International","flightto":"Amsterdam Schiphol","date":"20130521","thumbnailUrl":"msg\/resources\/flight_images\/amsterdam.jpg","pageurl":"http:\/\/wesbites.com\/retail\/e-commerce.html","price":"123134"}]'
+	//var flights = flights = JSON.parse(flightsText); 
+	
+	</script>
+		
+	<div id="1" align="center">
+	<table id="2" border="0">
+	
+	<tr>
+		<td align="left"><a href="flights.html">Back to Flights</a></td>
+		<td align="right">
+			<script language="JavaScript" type="text/javascript">
+			var loggedState='';
+			if(authenticated){
+				loggedState = '<a href="login.html?logout=true">Log Out</a>'
+			}
+			else{
+				loggedState = '<a href="login.html">Login</a>'
+			}
+			document.write(loggedState);
+			</script>
+			
+		</td>
+	</tr>
+	<tr>
+	<script language="JavaScript" type="text/javascript">
+		var out='';
+		var flightId = getParameterByName('flightid',document.URL)-1;
+		/*
+		for(i = 0; i < flights.length; i++) {
+			if(flightId == (i+1)){
+				out += '<tr><td> <img src="http://wesbites.com/'+flights[i].thumbnailUrl+'""></td></tr><tr><td>FROM: ' + flights[i].flightfrom + '</td></tr><tr><td>TO:'+flights[i].flightto+'</td></tr><tr><td>PRICE:'+numberFormatter(flights[i].price)+'</td></tr><tr><td>'+flights[i].category+'</td></tr>';
+			}
+		}*/
+		document.write('<tr><td> <img src="http://wesbites.com/'+flights[flightId].thumbnailUrl+'""></td></tr><tr><td>FROM: ' + flights[flightId].flightfrom + '</td></tr><tr><td>TO:'+flights[flightId].flightto+'</td></tr><tr><td>PRICE:'+numberFormatter(flights[flightId].price)+'</td></tr><tr><td>'+flights[flightId].category+'</td></tr>');
+			
+		function numberFormatter(string){
+			var newNumber = Number(string)
+			newNumber = newNumber/100;
+			return newNumber.toLocaleString("de-AT", {style: "currency", currency: "EUR", currencyDisplay:"symbol", minimumFractionDigits: 2})
+		
+		}
+		
+		function getParameterByName(name, url) {
+			if (!url) url = window.location.href;
+			name = name.replace(/[\[\]]/g, "\\$&");
+			var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+				results = regex.exec(url);
+			if (!results) return null;
+			if (!results[2]) return '';
+			return decodeURIComponent(results[2].replace(/\+/g, " "));
+		}
+		</script>
+	</tr>
+</table>
+	
+	<br><br>
+	</div>
+
+<!-- Analytics Code -->
+<script language="JavaScript" type="text/javascript" src="AppMeasurement.js"></script>
+<script language="JavaScript" type="text/javascript">
+
+s.pageName="dma:flights:detail";
+s.eVar6="productfinder";
+s.events="event4";
+s.eVar7=flights[flightId].flightfrom;
+s.eVar8=flights[flightId].flightto;
+//s.contextData['flightto']=s.eVar8;
+//s.contextData['flightfrom']=s.eVar7;
+
+
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script>
+<!-- End Analytics Code -->
+	
+	</body>
+</html>
+
+

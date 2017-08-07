@@ -1,0 +1,63 @@
+<html>
+	<head>
+		<title>Homepage</title>
+		<script language="JavaScript" type="text/javascript" src="cookies.js"></script>
+		<script language="JavaScript" type="text/javascript" src="VisitorAPI.js"></script>
+		<script language="JavaScript" type="text/javascript" src="at.js"></script>
+		<script rc="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> 
+	</head>
+	
+	<body>
+	<div align="center">
+	<table border="0">
+	
+
+	
+	<tr>
+		<td align="right">
+			<script language="JavaScript" type="text/javascript">
+			var loggedState='';
+			if(authenticated){
+				loggedState = '<a href="login.html?logout=true">Log Out</a>'
+			}
+			else{
+				loggedState = '<a href="login.html">Login</a>'
+			}
+			document.write(loggedState);
+			</script>
+			
+		</td>
+	</tr>
+	<tr><td>
+<img src="images/homepage_plane.jpg" usemap="#jjmap" border="0" />
+<map name="jjmap">
+<area shape="rect" coords="645,385,950,507" href="flights.html" /></map>
+</tr></td>
+<tr align="center">
+
+	<td><a href="flightdiscounts.html">Discounts</a></td>
+
+	</tr>
+<tr align="center">
+	<td><a href="news/news-lister.html">News</a></td>
+	</tr>
+</table>
+	
+	<br><br>
+	</div>
+
+<!-- Analytics Code-->
+<script language="JavaScript" type="text/javascript" src="AppMeasurement.js"></script>
+<script language="JavaScript" type="text/javascript">
+
+s.pageName="dma:home";
+s.eVar6="home"
+
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script>
+<!-- End Analytics Code -->
+	
+	</body>
+</html>
+
+
