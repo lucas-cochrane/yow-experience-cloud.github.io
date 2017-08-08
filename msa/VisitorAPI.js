@@ -10,9 +10,9 @@ return e===Object(e)&&"string"==typeof e.dpuuid&&e.dpuuid.length?(e.url="//dpm.d
 
 
 //This block of code is for ease of demo deployment only/////////////
-var agsSandbox = "ags007"; //INSERT AGS SANDBOX NUMBER HERE (example: ags007)
-var mcorgid = "70CF11B55624C5F67F000101@AdobeOrg"; //INSERT YOUR MARKETING CLOUD ORG ID HERE
-var internalDomain = "businesscatalyst.com"; //INSERT YOUR DOMAIN HERE
+var agsSandbox = "ags438"; //INSERT AGS SANDBOX NUMBER HERE (example: ags007)
+var mcorgid = "44BF81D7572842847F000101@AdobeOrg"; //INSERT YOUR MARKETING CLOUD ORG ID HERE
+var internalDomain = "yow-experience-cloud.github.io"; //INSERT YOUR DOMAIN HERE
 
 //defaults if blank strings above
 if(mcorgid===""){

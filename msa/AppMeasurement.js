@@ -3,7 +3,7 @@ var s_account = agsSandbox + "template";
 var s = s_gi(s_account);
 
 if(document.URL.indexOf('adobe_mc') > -1)
-	s.account = 'ags007bootcampapp';
+	s.account = 'ags438bootcampapp';
 
 s.visitor = Visitor.getInstance(mcorgid);
 
